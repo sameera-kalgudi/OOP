@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class CustomerAccount {
 	
-	private String custName;
-	private String custPhone;
-	private String custAcctNumber;
+	public String custName;
+	public String custPhone;
+	public String custAcctNumber;
 	
 	public CustomerAccount() {
 		// create empty CustomerAccount
@@ -43,6 +43,7 @@ public class CustomerAccount {
 		
 		return newAcct;
 	}
+	
 	
 	public CustomerAccount updateCustomerName(String acctNum, String name) throws NoSuchCustomerAccountException {
 		CustomerAccountDAO cad = new CustomerAccountDAO();
