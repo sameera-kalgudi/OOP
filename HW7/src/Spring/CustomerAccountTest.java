@@ -13,20 +13,20 @@ class CustomerAccountTest {
 	public CustomerAccount customerAccount;
 
 	@BeforeEach
-	void setUp() throws Exception {
+	public void setUp() throws Exception {
 		customerAccount = new CustomerAccount();
-		customerAccount.createNewAccount("1", "2");
 		System.out.println("---Initialized Object---");
 		
 	}
 
 	@AfterEach
-	void tearDown() throws Exception {
+	public void tearDown() throws Exception {
 	}
 
 	@Test
 	public void testGetAcctNum() throws SQLException, NoAccountCreatedException {
 		CustomerAccountDAO test = mock(CustomerAccountDAO.class);
+		customerAccount.createNewAccount("1", "2");
 		when(test.getAcctNum(customerAccount)).thenReturn("12");
 		assertEquals(test.getAcctNum(customerAccount), "12");
 		System.out.println("Account Number= " + test.getAcctNum(customerAccount));
@@ -34,7 +34,7 @@ class CustomerAccountTest {
 	}
 	
 	@Test
-	void testGetAccountName() {
+	public void testGetAccountName() {
 		CustomerAccountDAO test = mock(CustomerAccountDAO.class);
 		when(test.getAcctName(customerAccount)).thenReturn("1");
 		assertEquals(test.getAcctName(customerAccount), "1");
@@ -42,16 +42,28 @@ class CustomerAccountTest {
 	}
 
 	@Test
-	void testGetAccount() throws SQLException, NoSuchCustomerAccountException {
+	public void testGetAccount() throws SQLException, NoSuchCustomerAccountException {
 		CustomerAccountDAO test = mock(CustomerAccountDAO.class);
 		when(test.getAccount("12")).thenReturn(customerAccount);
 		assertEquals(test.getAccount("12"), customerAccount);
-		System.out.println("Account Name= " + test.getAcctName(customerAccount));	
+		System.out.println("Account = " + test.getAccount("12"));	
 	}
 
 	@Test
-	void testUpdateCustomerName() {
-		fail("Not yet implemented");
+	public void testUpdateAccount() throws NoSuchCustomerAccountException {
+		CustomerAccountDAO test = mock(CustomerAccountDAO.class);
+		customerAccount.updateCustomerName("12", "newname");
+		assertEquals(test.getAcctName(customerAccount), "newname");
+		System.out.println("Account = " + test.getAcctName(customerAccount));
+	}
+	
+	@Test
+	public void testCreateAccount() throws SQLException, NoAccountCreatedException
+	{
+		customerAccount.createNewAccount("1", "2");
+		CustomerAccountDAO test = mock(CustomerAccountDAO.class);
+		when(test.getAcctNum(customerAccount)).thenReturn("12");
+		assertEquals(test.getAcctName(customerAccount), "12");
 	}
 
 }

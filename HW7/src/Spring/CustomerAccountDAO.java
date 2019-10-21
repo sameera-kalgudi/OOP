@@ -13,7 +13,7 @@ public class CustomerAccountDAO {
 		account.add(ca);
 	}
 	public void updateAccount(CustomerAccount ca) throws SQLException, NoSuchCustomerAccountException {
-		System.out.println("Customer name now: " +  getAcctName(ca) + "for acctNumber: " + getAcctNum(ca));
+		System.out.println("Customer name now: " +  getAcctName(ca) + " for acctNumber: " + getAcctNum(ca));
 	}	
 	public void deleteAccount(CustomerAccount ca) throws SQLException {
 		account.remove(ca);
