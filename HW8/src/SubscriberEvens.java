@@ -1,21 +1,15 @@
 
-public class SubscriberEvens implements PublisherInterface {
+public class SubscriberEvens implements Observer {
 
 	@Override
-	public void registerObserver(Observer o) {
-		// TODO Auto-generated method stub
-
+	public boolean notifyObserver(Event e) {
+		if(e.getEventData() % 2 != 0) {
+			System.out.println("Event " + e.getEventNumber() + " is odd: " + e.getEventData());
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
-
-	@Override
-	public void removeObserver(Observer o) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void notifyObservers(Observer o) {
-
-	}
-
 }

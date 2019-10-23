@@ -1,22 +1,16 @@
 
-public class SubscriberThrees implements PublisherInterface {
+public class SubscriberThrees implements Observer {
 
 	@Override
-	public void registerobserver(Observer o) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void removeobserver(Observer o) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void notifyobserver(Observer o) {
-		// TODO Auto-generated method stub
-
+	public boolean notifyObserver(Event e) {
+		if(e.getEventData() % 2 != 0) {
+			System.out.println("Event " + e.getEventNumber() + " is odd: " + e.getEventData());
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 }

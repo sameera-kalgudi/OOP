@@ -1,12 +1,13 @@
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class PublisherImplementation {
+public class PublisherImplementation implements PublisherInterface {
 	
-	List<Observer>subscribers = new ArrayList<>();
+	private List<Observer>subscribers = new ArrayList<Observer>();
+	private List<Observer> unsubscribers = new ArrayList<Observer>();
 	
-	public void notifyObserver(Event e) {
-		System.out.println("Event Added: " + e.getEventNumber());
+	public boolean notifyObserver(Observer o) {
+		for 
 	}
 	
 	public Event generateEvent() {
@@ -19,5 +20,24 @@ public class PublisherImplementation {
 	
 	public void runSimulation() {
 		
+	}
+	
+	public void registerObserver(Observer o) {
+		
+		if (unsubscribers.contains(o)) {
+			unsubscribers.remove(o);
+		}
+		
+		subscribers.add(o);
+	}
+
+	public void removeObserver(Observer o) {
+	
+		if (subscribers.contains(o)) {
+			subscribers.remove(o);
+		}
+		
+		subscribers.remove(o);
+
 	}
 }
