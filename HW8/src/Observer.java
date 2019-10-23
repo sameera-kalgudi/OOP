@@ -1,7 +1,4 @@
 
-public class Observer {
-	public void notifyobserver(Event e) {
-		
-	}
-
+public interface Observer {
+	public void notifyObserver(Event e);
 }
