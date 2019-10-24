@@ -11,7 +11,11 @@ public class PublisherImplementation implements PublisherInterface {
 	}
 	
 	private Event generateEvent() {
-		Event e = new Event(1, 1);
+		int count = 0;
+		int eventData = ThreadLocalRandom.current().nextInt(1, 5000); 
+		int eventNumber = count;
+		count++;
+		return new Event(eventNumber, eventData);
 	}
 	
 	public void runSimulation() {
