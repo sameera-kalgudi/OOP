@@ -7,6 +7,9 @@ public class PublisherImplementation implements PublisherInterface {
  	
 
 	public void notifyObserver(Event e) {
+		for (Observer o:subscribers) {
+			o.notifyObserver(e);
+		}
 		
 	}
 	
