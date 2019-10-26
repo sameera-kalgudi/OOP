@@ -1,13 +1,14 @@
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class PublisherImplementation implements PublisherInterface {
+public class PublisherImplementation implements Observer {
 	
 	private List<Observer>subscribers = new ArrayList<Observer>();
 	private List<Observer> unsubscribers = new ArrayList<Observer>();
 	
-	public boolean notifyObserver(Observer o) {
-		for 
+	public boolean notifyObserver(Event e) {
+		System.out.println("Event " + e.getEventNumber() + e.getEventData());
+		return true;
 	}
 	
 	public Event generateEvent() {
@@ -19,6 +20,59 @@ public class PublisherImplementation implements PublisherInterface {
 	}
 	
 	public void runSimulation() {
+		PublisherImplementation PubImp = new PublisherImplementation();
+		SubscriberEvens SubEven = new SubscriberEvens();
+		SubscriberOdds SubOdd = new SubscriberOdds();
+		SubscriberThrees SubThree = new SubscriberThrees();
+		int oddsCount = 0;
+		int evensCount = 0;
+		int threesCount = 0;
+						
+		
+		for(var i = 0; i < 200; i++)
+		{
+			Event newEvent = generateEvent();
+			for(Observer o :subscribers)
+			{
+				Boolean evenResponse = SubEven.notifyObserver(newEvent);
+				Boolean oddResponse = SubOdd.notifyObserver(newEvent);
+				Boolean threeResponse = SubThree.notifyObserver(newEvent);
+				
+				if(evenResponse == true)
+				{
+					evensCount++;
+				}
+				if(oddResponse == true)
+				{
+					oddsCount++;
+				}
+				if(threeResponse == true)
+				{
+					threesCount++;
+				}
+				
+				if(oddsCount > 20)
+				{
+					removeObserver(SubOdd);
+				}
+				if(threesCount > 6)
+				{
+					removeObserver(SubThree);
+				}
+				if(i == 40 || i == 80 || i == 120 || i == 160 || i == 160)
+				{
+					if(unsubscribers.contains(SubOdd))
+					{
+						registerObserver(SubOdd);
+					}
+					if(unsubscribers.contains(SubThree))
+					{
+						registerObserver(SubThree);
+					}
+				}
+			}
+				
+		}
 		
 	}
 	
@@ -27,7 +81,7 @@ public class PublisherImplementation implements PublisherInterface {
 		if (unsubscribers.contains(o)) {
 			unsubscribers.remove(o);
 		}
-		
+
 		subscribers.add(o);
 	}
 
@@ -37,7 +91,7 @@ public class PublisherImplementation implements PublisherInterface {
 			subscribers.remove(o);
 		}
 		
-		subscribers.remove(o);
+		unsubscribers.add(o);
 
 	}
 }
