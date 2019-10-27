@@ -1,13 +1,11 @@
-
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.*;
+import org.junit.jupiter.api.*;
 
-class PublisherImplementationTest {
-	
+public class PublisherImplementationTest {
 	PublisherImplementation i;
 
 	@BeforeEach
@@ -34,17 +32,32 @@ class PublisherImplementationTest {
 
 	@Test
 	void testRunSimulation() {
-		fail("Not yet implemented");
+		Event e = i.generateEvent();
+		SubscriberEvens SubEven = new SubscriberEvens();
+		Boolean evenResponse = SubEven.notifyObserver(e);
+		assertEquals(false,evenResponse);
+		
+		
 	}
 
 	@Test
-	void testRegisterObserver() {
-		fail("Not yet implemented");
+	void testRunSimulation1() {
+		Event e = i.generateEvent();
+		SubscriberOdds SubOdd = new SubscriberOdds();
+		Boolean oddResponse = SubOdd.notifyObserver(e);
+		assertEquals(true,oddResponse);
+		
+		
 	}
-
+	
 	@Test
-	void testRemoveObserver() {
-		fail("Not yet implemented");
+	void testRunSimulation2() {
+		Event e = i.generateEvent();
+		SubscriberThrees SubThree = new SubscriberThrees();
+		Boolean threeResponse = SubThree.notifyObserver(e);
+		assertEquals(true,threeResponse);
+		
+		
 	}
 
 }
