@@ -1,15 +1,10 @@
 
 public class RunHW8 {
-	
-	PublisherImplementation p1 = new PublisherImplementation();
-	PublisherImplementation pub = p1;
 
-	public void SubscriberOdds implements PublisherInterface{
-		pub.
-	}
-	
-	public static void main() {
-		
+	public static void main(String[] args) {
+		PublisherImplementation p1 = new PublisherImplementation();
+		PublisherImplementation pub = p1;
+		pub.runSimulation();
 	}
 
 }

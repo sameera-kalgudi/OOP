@@ -1,7 +1,6 @@
 
 public interface PublisherInterface {
-	public void registerobserver(Observer o);
-	public void removeobserver(Observer o);
-	public void notifyobserver(Observer o);
-
+	public void registerObserver(Observer o);
+	public void removeObserver(Observer o);
+	public void notifyObservers(Observer o);
 }
