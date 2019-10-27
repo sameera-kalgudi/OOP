@@ -53,22 +53,24 @@ public class PublisherImplementation implements Observer {
 			if(oddsCount > 20)
 			{
 				removeObserver(SubOdd);
+				System.out.println("removed subOdd");
 			}
 			if(threesCount > 6)
 			{
 				removeObserver(SubThree);
+				System.out.println("removed subThree");
 			}
 			if(i == 40 || i == 80 || i == 120 || i == 160 || i == 160)
 			{
 				if(unsubscribers.contains(SubOdd))
 				{
 					registerObserver(SubOdd);
-					System.out.println("removed subOdd");
+					System.out.println("added subOdd");
 				}
 				if(unsubscribers.contains(SubThree))
 				{
 					registerObserver(SubThree);
-					System.out.println("removed subThree");
+					System.out.println("added subThree");
 				}
 			}
 				
